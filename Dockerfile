@@ -14,12 +14,6 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /crm-event-handler-hello-world
 
 FROM alpine:latest
 
-# Install DataWeave CLI and other dependencies
-RUN apt-get update && apt-get install -y \
-    curl \
-    && curl -sSL https://github.com/mulesoft-labs/data-weave-cli/releases/download/v1.0.34/dw-1.0.34-Linux | tar zxvf - -C /usr/local/bin \
-    && chmod +x /usr/local/bin/dw
-
 RUN apk --no-cache add ca-certificates
 
 COPY --from=builder /crm-event-handler-hello-world ./
