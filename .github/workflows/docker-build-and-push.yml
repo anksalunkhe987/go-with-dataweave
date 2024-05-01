@@ -17,7 +17,7 @@ jobs:
 
     - name: Build the Docker image
       run: |
-        docker build -t my-image:latest .
+        docker build no-cache -t my-image:latest .
         docker tag my-image:latest ${{ secrets.DOCKERHUB_USERNAME }}/my-image:latest
 
     - name: Push the Docker image
